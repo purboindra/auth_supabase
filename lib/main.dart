@@ -1,4 +1,5 @@
 import 'package:auth_supabase/auth/screen/auth_screen.dart';
+import 'package:auth_supabase/reqres_signin/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuthScreen(),
+      home: const Login(),
     );
   }
 }
