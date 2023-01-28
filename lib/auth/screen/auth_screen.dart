@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:auth_supabase/auth/screen/sign_up_screen.dart';
 import 'package:auth_supabase/controller/auth_controller.dart';
+import 'package:auth_supabase/repository/auth_repository.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -189,26 +192,32 @@ class AuthScreen extends ConsumerWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.facebook_sharp,
-                        color: Color.fromARGB(255, 14, 115, 232),
-                        size: 32,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Masuk dengan Facebook',
-                        style: TextStyle(
+                  InkWell(
+                    onTap: () {
+                      log('FACEBOOK');
+                      ref.read(authRepositoryProvider).signInFacebook();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.facebook_sharp,
                           color: Color.fromARGB(255, 14, 115, 232),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                          size: 32,
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Masuk dengan Facebook',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 14, 115, 232),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

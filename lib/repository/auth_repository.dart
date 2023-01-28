@@ -48,6 +48,16 @@ class AuthRepository {
     }
   }
 
+  Future signInFacebook() async {
+    try {
+      await _supabase.client.auth.signInWithOAuth(Provider.facebook,
+          redirectTo:
+              'https://aeewenozxhebsvofenuh.supabase.co/auth/v1/callback');
+    } catch (e) {
+      return left(Failure(message: e.toString()));
+    }
+  }
+
   FutureEither<AuthResponse> signInUser({
     required String email,
     required String password,
